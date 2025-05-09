@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toolexa - All-in-One Online Tools</title>
+    <title>Toolexa - Premium Online Tools Suite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* All your original CSS remains exactly the same */
         :root {
             --primary-blue: #2563eb;
             --secondary-blue: #3b82f6;
@@ -16,13 +16,526 @@
             --medium-gray: #4b5563;
             --light-gray: #9ca3af;
             --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
-        /* ... (rest of your CSS remains unchanged) ... */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            background-color: #f8fafc;
+        }
+
+        /* Premium Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo i {
+            font-size: 1.5rem;
+            color: var(--secondary-blue);
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--medium-gray);
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-blue);
+            transition: width 0.3s;
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        .contact-email {
+            color: var(--medium-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+        }
+
+        .contact-email:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Luxury Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 5% 7rem;
+            background: linear-gradient(135deg, #f8fafc 0%, var(--lighter-blue) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, rgba(59,130,246,0) 70%);
+            z-index: 0;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--medium-gray);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tool-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin: 4rem auto;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tool-icon {
+            background: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+        }
+
+        .tool-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .tool-icon i {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            transition: all 0.3s;
+        }
+
+        .tool-icon:hover i {
+            transform: scale(1.1);
+        }
+
+        /* Premium Search Bar */
+        .search-container {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.3rem 2.5rem;
+            border: 2px solid var(--light-blue);
+            border-radius: 50px;
+            font-size: 1.05rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-gray);
+            font-size: 1.1rem;
+        }
+
+        /* Premium Buttons */
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background: rgba(59, 130, 246, 0.05);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Professional Tool Sections */
+        .section {
+            padding: 5rem 5%;
+            position: relative;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .section-heading i {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+        }
+
+        .section-subheading {
+            color: var(--medium-gray);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-card {
+            padding: 2rem;
+            border-radius: 16px;
+            background: white;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .tool-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary-blue);
+        }
+
+        .tool-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tool-icon-small {
+            background: var(--lighter-blue);
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        .tool-card:hover .tool-icon-small {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .tool-icon-small i {
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .tool-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .tool-card p {
+            color: var(--medium-gray);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .tool-card .btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Luxury Footer */
+        footer {
+            background: var(--dark-gray);
+            color: white;
+            padding: 5rem 5% 3rem;
+            position: relative;
+        }
+
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .footer-logo i {
+            color: var(--secondary-blue);
+        }
+
+        .footer-tagline {
+            color: var(--light-gray);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .footer-contact {
+            margin-bottom: 2rem;
+        }
+
+        .footer-contact a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-contact a:hover {
+            color: var(--secondary-blue);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-links h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 4rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--light-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--medium-gray);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 5%;
+            }
+            
+            nav, .contact-email {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 5rem 5% 6rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .hero p {
+                font-size: 1.15rem;
+            }
+            
+            .tool-icon {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .section-heading {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-heading {
+                font-size: 1.4rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tool-card {
+                padding: 1.75rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Premium Header -->
     <header>
         <div class="logo">
             <i class="fas fa-tools"></i>
@@ -42,11 +555,11 @@
         </button>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Luxury Hero Section -->
     <section class="hero" id="home">
-        <h1>Your Daily Tools, All in One Place</h1>
-        <p>Convert, calculate, compress, and simplify your everyday tasks — fast and free.</p>
-        <button class="btn btn-primary">Explore Tools</button>
+        <h1>Your Premium Tools Suite</h1>
+        <p>Professional-grade tools to convert, calculate, compress, and simplify your workflow — beautifully designed and completely free.</p>
+        <button class="btn btn-primary">Explore All Tools</button>
         
         <div class="tool-icons">
             <div class="tool-icon">
@@ -67,7 +580,7 @@
         </div>
         
         <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search a tool...">
+            <input type="text" class="search-input" placeholder="Search for tools...">
             <i class="fas fa-search search-icon"></i>
         </div>
     </section>
@@ -78,7 +591,7 @@
             <i class="fas fa-image"></i>
             <span>Image Tools</span>
         </h2>
-        <p class="section-subheading">Edit, convert and optimize your images with our powerful tools</p>
+        <p class="section-subheading">Professional image processing tools with premium quality output</p>
         
         <div class="tools-grid">
             <div class="tool-card">
@@ -88,7 +601,7 @@
                     </div>
                     <h3>Image Converter</h3>
                 </div>
-                <p>Convert between JPG, PNG, WEBP, and more formats</p>
+                <p>Convert between JPG, PNG, WEBP, and more formats with lossless quality</p>
                 <a href="image-converter.html" class="btn btn-outline">Use Tool</a>
             </div>
             
@@ -99,7 +612,7 @@
                     </div>
                     <h3>Image Compressor</h3>
                 </div>
-                <p>Reduce image file size without losing quality</p>
+                <p>Reduce image file size while preserving visual quality</p>
                 <a href="image-compressor.html" class="btn btn-outline">Use Tool</a>
             </div>
             
@@ -110,7 +623,7 @@
                     </div>
                     <h3>Image Resizer</h3>
                 </div>
-                <p>Resize images to any dimension while maintaining aspect ratio</p>
+                <p>Resize images to exact dimensions with smart scaling</p>
                 <a href="image-resizer.html" class="btn btn-outline">Use Tool</a>
             </div>
             
@@ -121,7 +634,7 @@
                     </div>
                     <h3>Image Cropper</h3>
                 </div>
-                <p>Crop images to remove unwanted areas or focus on specific parts</p>
+                <p>Precision cropping tool with aspect ratio controls</p>
                 <a href="image-cropper.html" class="btn btn-outline">Use Tool</a>
             </div>
             
@@ -132,7 +645,7 @@
                     </div>
                     <h3>Image to Text (OCR)</h3>
                 </div>
-                <p>Extract text from images with optical character recognition</p>
+                <p>Extract text from images with high accuracy OCR</p>
                 <a href="image-to-text.html" class="btn btn-outline">Use Tool</a>
             </div>
             
@@ -141,9 +654,9 @@
                     <div class="tool-icon-small">
                         <i class="fas fa-sync"></i>
                     </div>
-                    <h3>Image Rotator/Flipper</h3>
+                    <h3>Image Rotator</h3>
                 </div>
-                <p>Rotate or flip images horizontally/vertically</p>
+                <p>Rotate or flip images with pixel-perfect precision</p>
                 <a href="image-rotator.html" class="btn btn-outline">Use Tool</a>
             </div>
         </div>
@@ -155,7 +668,7 @@
             <i class="fas fa-file-alt"></i>
             <span>Document Tools</span>
         </h2>
-        <p class="section-subheading">Manage and convert your documents with ease</p>
+        <p class="section-subheading">Professional document conversion and processing tools</p>
         
         <div class="tools-grid">
             <div class="tool-card">
@@ -163,9 +676,9 @@
                     <div class="tool-icon-small">
                         <i class="fas fa-file-word"></i>
                     </div>
-                    <h3>PDF to Word / Word to PDF</h3>
+                    <h3>PDF to Word</h3>
                 </div>
-                <p>Convert between PDF and Word documents seamlessly</p>
+                <p>Convert PDF documents to editable Word files</p>
                 <a href="pdf-to-word.html" class="btn btn-outline">Use Tool</a>
             </div>
         </div>
@@ -177,7 +690,7 @@
             <i class="fas fa-calculator"></i>
             <span>Calculator Tools</span>
         </h2>
-        <p class="section-subheading">Perform various calculations for your personal and professional needs</p>
+        <p class="section-subheading">Advanced calculators for professional and personal use</p>
         
         <div class="tools-grid">
             <div class="tool-card">
@@ -193,7 +706,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Luxury Footer -->
     <footer id="contact">
         <div class="footer-content">
             <div>
@@ -201,7 +714,7 @@
                     <i class="fas fa-tools"></i>
                     <span>Toolexa</span>
                 </div>
-                <p class="footer-tagline">Simplifying your digital life.</p>
+                <p class="footer-tagline">Professional tools designed for everyone. Free forever.</p>
                 <div class="footer-contact">
                     <a href="mailto:toolexa7@gmail.com">toolexa7@gmail.com</a>
                 </div>
@@ -211,19 +724,19 @@
                 <h3>Quick Links</h3>
                 <div class="footer-links">
                     <a href="#privacy">Privacy Policy</a>
-                    <a href="#terms">Terms of Use</a>
+                    <a href="#terms">Terms of Service</a>
                     <a href="#tools">All Tools</a>
-                    <a href="#contact">Contact</a>
+                    <a href="#contact">Contact Us</a>
                 </div>
             </div>
             
             <div>
-                <h3>Categories</h3>
+                <h3>Tool Categories</h3>
                 <div class="footer-links">
                     <a href="#image-tools">Image Tools</a>
                     <a href="#document-tools">Document Tools</a>
                     <a href="#calculator-tools">Calculator Tools</a>
-                    <a href="#text-tools">Text Tools</a>
+                    <a href="#developer-tools">Developer Tools</a>
                 </div>
             </div>
         </div>
@@ -238,12 +751,14 @@
             const searchInput = document.querySelector('.search-input');
             
             searchInput.addEventListener('input', function() {
+                // Search functionality
                 console.log('Searching for:', this.value);
             });
             
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             
             mobileMenuBtn.addEventListener('click', function() {
+                // Mobile menu toggle
                 console.log('Mobile menu clicked');
             });
         });
